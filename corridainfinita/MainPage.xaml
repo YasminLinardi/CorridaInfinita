@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="corridainfinita.MainPage"
+             Shell.NavBarIsVisible="False"
+             Padding="0"
+             BackgroundColor="White">
+
+       <Grid Margin="0"
+             Padding="0">
+              <Image Source="fundo.png"
+                     Aspect="Fill"
+                     Margin="0"
+                     HorizontalOptions="Fill"
+                     VerticalOptions="Fill"/>
+
+                <Image x:Name="fundo2"
+                     Source="fundo2.png"
+                     Aspect="Fill"
+                     Margin="0"
+                     HeightRequest="900"
+                     WidthRequest="700"
+                     HorizontalOptions="Center"
+                     VerticalOptions="Start"/>
+
+              <Image x:Name="animal"
+                     Source="animal.png"
+                     Aspect="AspectFit"
+                     Margin="50,0,0,0"
+                     HeightRequest="250"
+                     WidthRequest="250"
+                     HorizontalOptions="Start"
+                     VerticalOptions="End"/>
+
+              <Label x:Name="labelscore"
+                     Text="Score: 00000"
+                     FontSize="15"
+                     Margin="0,20,20,0"
+                     FontFamily="slkscre"
+                     VerticalOptions="Start"
+                     HorizontalOptions="End"/>
+
+              <Image x:Name="chao"
+                     Source="chao.png"
+                     Margin="0"
+                     HeightRequest="50"
+                     Aspect="Fill"
+                     HorizontalOptions="Fill"
+                     VerticalOptions="End"/>
+
+       </Grid>
+
+</ContentPage>

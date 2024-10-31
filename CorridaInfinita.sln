@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "corridainfinita", "corridainfinita\corridainfinita.csproj", "{CF0E707C-1CA8-46FD-996B-18BD1B96872A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CF0E707C-1CA8-46FD-996B-18BD1B96872A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF0E707C-1CA8-46FD-996B-18BD1B96872A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF0E707C-1CA8-46FD-996B-18BD1B96872A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF0E707C-1CA8-46FD-996B-18BD1B96872A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D6D57090-A44A-4F88-B1B0-F580529DBE04}
+	EndGlobalSection
+EndGlobal
