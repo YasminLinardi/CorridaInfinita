@@ -1,47 +1,75 @@
 namespace corridainfinita;
 
-public class Animacao
+public partial class AnimacaoPage 
+{
+    protected List<String> Animacao1 =new List<string>();
+    protected List<String> Animacao2 =new List<string>();
+    protected List<String> Animacao3 =new List<string>();
+    protected bool loop=true;
+    protected int AnimacaoAtiva =1;
+    bool parado=true;
+    int frameAtual=1;
+    protected CachedImageView compImagem;
+
+    public AnimacaoPage(CachedImageView a)
 	{
-		protected List<String> animacao1 = new List<string>();
-		protected List<String> animacao2 = new List<string>();
-		protected List<String> animacao3 = new List<string>();
-		protected bool loop = true;
-		protected int animacaoAtiva = 1;
-		bool parado = true;
-		int frameAtual = 1;
-		protected Image compImagem;
+		compImagem=a;
+	}
 
-		public Animacao(Image a)
+    public void Stop()
+    {
+        parado=true;
+    }
+
+    public void Play ()
+    {
+        parado=false;
+    }
+
+    public void SetAnimacaoAtual(int a)
+    {
+        AnimacaoAtiva=a;
+    }
+
+    public void Desenha()
+    {
+        if(parado)
+        return;
+        string nomeArquivo="";
+        int tamanhoAnimacao=0;
+        if(AnimacaoAtiva==1)
         {
-            compImagem = a;
+            nomeArquivo=Animacao1[frameAtual];
+            tamanhoAnimacao=Animacao1.Count;
         }
-
-        public void Stop()
+        else if(AnimacaoAtiva==2)
         {
-            parado = true;
+            nomeArquivo=Animacao2[frameAtual];
+            tamanhoAnimacao=Animacao2.Count;
         }
-
-        public void Play()
+        else if(AnimacaoAtiva==3)
         {
-            parado = false;
+            nomeArquivo=Animacao3[frameAtual];
+            tamanhoAnimacao=Animacao3.Count;
         }
-
-        public void SetAnimacaoAtiva(int a)
+        compImagem.Source=ImageSource.FromFile(nomeArquivo);
+        frameAtual++;
+        
+        if(frameAtual >= tamanhoAnimacao)
         {
-            animacaoAtiva = a;
-        }
-
-        public void Desenha()
-        {
-            if(parado)
-                return;
-            
-            string nomeArquivo="";
-            int tamanhoAnimacao = 0;
-            if (animacaoAtiva ==1)
+            if(loop)
+            frameAtual=0;
+            else
             {
-                nomeArquivo = animacao1.Count;
-                nomeAnimacao = animacao2.Count;
+                parado=true;
+                QuandoParar();
             }
         }
-	}
+    }
+
+    public virtual void QuandoParar()
+    {
+        
+    }
+
+}

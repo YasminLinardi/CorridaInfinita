@@ -11,18 +11,33 @@ public partial class MainPage : ContentPage
 	int velocidade3 = 0;
 	int larguraJanela = 0;
 	int alturaJanela = 0;
+	Player player;
 
 	public MainPage()
 	{
 		InitializeComponent();
+		player=new Player(animacao);
+		player.Run();
 	}
 
-	async Task Desenha()
+	async Task Desenhar()
 	{
 		while (!estamorto)
 		{
-			GerenciaCenarios();
-			await Task.Delay (tempoentreframes);
+			GerenciaImagens();
+			player.Desenha();
+			await Task.Delay(tempoentreframes);
+		}
+	}
+
+	void GerenciaImagens(HorizontalStackLayout HSL)
+	{
+		var view = (HSL.Children.First() as Image);
+		if (view.WidthRequest + HSL.TranslationX <0)
+		{
+			HSL.Children.Remove(view);
+			HSL.Children.Add(view);
+			HSL.TranslationX=view.TranslationX;
 		}
 	}
 
@@ -32,16 +47,15 @@ public partial class MainPage : ContentPage
 		CalculaVelocidade(w);
 		CorrigeTamanho(w, h);
 	}
-
 	protected override void OnAppearing()
 	{
 		base.OnAppearing();
-		Desenha();
+		Desenhar();
 	}
 	void CalculaVelocidade(double w)
 	{
 		velocidade = (int)(w * 0.01);
-		velocidade1 = (int)(w * 0.001);
+		velocidade1 = (int)(w * 0.002);
 		velocidade2 = (int)(w * 0.004);
 		velocidade3 = (int)(w * 0.008);
 	}
@@ -52,40 +66,26 @@ public partial class MainPage : ContentPage
 			(a as Image).WidthRequest = w;
 		foreach (var a in Layer2.Children)
 			(a as Image).WidthRequest = w;
-		foreach (var a in LayerChao.Children)
+		foreach (var a in Layerchao.Children)
 			(a as Image).WidthRequest = w;
 
 		Layer1.WidthRequest = w;
 		Layer2.WidthRequest = w;
-		LayerChao.WidthRequest = w;
+		Layerchao.WidthRequest = w;
 	}
 
-	void GerenciaCenarios()
+	void MoveCenario()
 	{
-		MoveCenerio();
-		GerenciaCenario(Layer1);
-		GerenciaCenario(Layer2);
-		GerenciaCenario(LayerChao);
+		Layer1.TranslationX-=velocidade1;
+		Layer2.TranslationX-=velocidade2;
+        Layerchao.TranslationX-=velocidade;
 	}
 
-	void MoveCenerio()
+	void GerenciaImagens()
 	{
-		Layer1.TranslationX -= velocidade1;
-		Layer2.TranslationX -= velocidade2;
-		LayerChao.TranslationX -= velocidade;
+		MoveCenario();
+		GerenciaImagens(Layer1);
+		GerenciaImagens(Layer2);
+		GerenciaImagens(Layerchao);
 	}
-
-	void GerenciaCenario(HorizontalStackLayout hsl)
-	{
-		var view = (hsl.Children.First() as Image);
-		if(view.WidthRequest+hsl.TranslationX < 0)
-		{
-			hsl.Children.Remove(view);
-			hsl.Children.Add(view);
-			hsl.TranslationX = view.TranslationX;
-		}
-
-	}
-
-
 }

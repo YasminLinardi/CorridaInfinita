@@ -7,54 +7,68 @@
               <HorizontalStackLayout x:Name="Layer1"
                                      VerticalOptions="Fill">
                      <Image Source="fundo.png"
-                            Aspect="Fill"
-                            VerticalOptions="Fill"/>
-
+                            VerticalOptions="Fill"
+                            Aspect="Fill"/>
                      <Image Source="fundo.png"
-                            Aspect="Fill"
-                            VerticalOptions="Fill"/>
-
+                            VerticalOptions="Fill"
+                            Aspect="Fill"/>
                      <Image Source="fundo.png"
-                            Aspect="Fill"
-                            VerticalOptions="Fill"/>
-
+                            VerticalOptions="Fill"
+                            Aspect="Fill"/>
               </HorizontalStackLayout>
-
 
               <HorizontalStackLayout x:Name="Layer2">
-
-                     <Image Source="fundo2.png"
-                            Aspect="Fill"
-                            VerticalOptions="Fill"/>
-
-                     <Image Source="fundo2.png"
-                            Aspect="Fill"
-                            VerticalOptions="Fill"/>
-
-                     <Image Source="fundo2.png"
-                            Aspect="Fill"
-                            VerticalOptions="Fill"/>
-
+                     <Image Source="fundo3.png"
+                            VerticalOptions="Fill"
+                            Aspect="Fill"/>
+                     <Image Source="fundo3.png"
+                            VerticalOptions="Fill"
+                            Aspect="Fill"/>
+                     <Image Source="fundo3.png"
+                            VerticalOptions="Fill"
+                            Aspect="Fill"/>
               </HorizontalStackLayout>
 
-
-              <HorizontalStackLayout x:Name="LayerChao"
-              VerticalOptions="End"
-              HeightRequest="100">
-                     <Image Source="chao.png"
-                            Aspect="Fill"
-                            VerticalOptions="End"/>
-
-                     <Image Source="chao.png"
-                            Aspect="Fill"
-                            VerticalOptions="End"/>
-
-                     <Image Source="chao.png"
-                            Aspect="Fill"
-                            VerticalOptions="End"/>
-
+              <HorizontalStackLayout x:Name="Layer3">
+                     <Image Source="fundo2.png"
+                            VerticalOptions="Fill"
+                            Aspect="Fill"/>
+                     <Image Source="fundo2.png"
+                            VerticalOptions="Fill"
+                            Aspect="Fill"/>
+                     <Image Source="fundo2.png"
+                            VerticalOptions="Fill"
+                            Aspect="Fill"/>
               </HorizontalStackLayout>
 
+              <HorizontalStackLayout x:Name="Layerchao"
+                                     VerticalOptions="End">
+                     <Image Source="chao.png"
+                            HorizontalOptions="Fill"
+                            VerticalOptions="Fill"
+                            HeightRequest="90"
+                            Aspect="Fill"/>
+                     <Image Source="chao.png"
+                            HeightRequest="90"
+                            HorizontalOptions="Fill"
+                            VerticalOptions="Fill"
+                            Aspect="Fill"/>
+                     <Image Source="chao.png"
+                            HeightRequest="90"
+                            HorizontalOptions="Fill"
+                            VerticalOptions="Fill"
+                            Aspect="Fill"/>
+              </HorizontalStackLayout>
+
+              <ff:CachedImageView x:Name="animacao"
+                     CacheType="All"
+                     CacheDuration="365"
+                     Source="bicho01.png"
+                     Margin="0,0,0,80"
+                     HeightRequest="100"
+                     WidthRequest="180"
+                     VerticalOptions="End"
+                     HorizontalOptions="Start"/>
 
 
        </Grid>
