@@ -4,13 +4,21 @@ public partial class MainPage : ContentPage
 {
 	bool estamorto = false;
 	bool estapulando = false;
-	const int tempoentreframes = 25;
+	bool estaNoChao = true;
+	bool estaNoAr = false;
+	const int forcaGravidade = 6;
+	const int forcaPulo = 8;
+	const int maxTempoPulando = 6;
+	const int masTempoNoAr = 4;
+	const int tempoEntreFrames = 25;
 	int velocidade = 0;
 	int velocidade1 = 0;
 	int velocidade2 = 0;
 	int velocidade3 = 0;
 	int larguraJanela = 0;
 	int alturaJanela = 0;
+	int tempoPulando = 0;
+	int tempoNoAr = 0;
 	Player player;
 
 	public MainPage()
@@ -20,13 +28,21 @@ public partial class MainPage : ContentPage
 		player.Run();
 	}
 
-	async Task Desenhar()
+	async Task Desenha()
 	{
 		while (!estamorto)
 		{
 			GerenciaImagens();
-			player.Desenha();
-			await Task.Delay(tempoentreframes);
+			if(!estapulando && !estaNoAr)
+			{
+				AplicaGravidade();
+				Player.Desenha();
+			}
+			else
+				AplicaPulo();
+
+			await Task.Delay(tempoEntreFrames);
+		
 		}
 	}
 
@@ -41,6 +57,41 @@ public partial class MainPage : ContentPage
 		}
 	}
 
+	void AplicaGravidade()
+	{
+		if(player.GetY()<0)
+		player.MoveY(forcaGravidade);
+		else if (player.GetY()>=0)
+		{
+			player.SetY(0);
+			estaNoChao = true;
+		}
+	}
+
+	void AplicaPulo()
+	{
+		estaNoChao=false;
+		if (estapulando && tempoPulando>=maxTempoPulando)
+		{
+			estapulando = false;
+			estaNoAr = true;
+			tempoPulando = 0;
+		}
+		else if (estsNoAr && tempoNoAr >= maxTempoNoAr)
+		{
+			estaPulando = false;
+			estaNoAr = false;
+			tempoPulando = 0;
+			tempoNoAr = 0;
+		}
+		else if (estaPulando && tempoPulando < maxTempoPulando)
+		{
+			player.MoveY (-forcaPulo);
+			tempoPulando ++;
+		}
+		else if (estaNoAr)
+			tempoNoAr ++;
+	}
 	protected override void OnSizeAllocated(double w, double h)
 	{
 		base.OnSizeAllocated(w, h);
@@ -50,7 +101,13 @@ public partial class MainPage : ContentPage
 	protected override void OnAppearing()
 	{
 		base.OnAppearing();
-		Desenhar();
+		Desenha();
+	}
+
+	void OnGridTapped (object o, TappedEventArgs a)
+	{
+		if(estaNoChao)
+		   estapulando = true;
 	}
 	void CalculaVelocidade(double w)
 	{

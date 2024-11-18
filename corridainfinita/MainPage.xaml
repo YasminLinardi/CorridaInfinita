@@ -3,7 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="corridainfinita.MainPage">
 
-       <Grid>
+       <Grid Margin="0"
+             Padding="0">
+              <Grid.GestureRecognizers>
+                     <TapGestureRecognizer Tapped="OnGridClicked"/>
+              </Grid.GestureRecognizers>
               <HorizontalStackLayout x:Name="Layer1"
                                      VerticalOptions="Fill">
                      <Image Source="fundo.png"
@@ -61,14 +65,14 @@
               </HorizontalStackLayout>
 
               <ff:CachedImageView x:Name="animacao"
-                     CacheType="All"
-                     CacheDuration="365"
-                     Source="bicho01.png"
-                     Margin="0,0,0,80"
-                     HeightRequest="100"
-                     WidthRequest="180"
-                     VerticalOptions="End"
-                     HorizontalOptions="Start"/>
+                            CacheType="All"
+                            CacheDuration="365"
+                            Source="bicho01.png"
+                            Margin="0,0,0,80"
+                            HeightRequest="100"
+                            WidthRequest="180"
+                            VerticalOptions="End"
+                            HorizontalOptions="Start"/>
 
 
        </Grid>
