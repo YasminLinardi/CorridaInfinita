@@ -9,11 +9,11 @@ public partial class AnimacaoPage
     protected int AnimacaoAtiva =1;
     bool parado=true;
     int frameAtual=1;
-    protected CachedImageView compImagem;
+    protected CachedImageView ImageView;
 
     public AnimacaoPage(CachedImageView a)
 	{
-		compImagem=a;
+		ImageView=a;
 	}
 
     public void Stop()
@@ -52,7 +52,7 @@ public partial class AnimacaoPage
             nomeArquivo=Animacao3[frameAtual];
             tamanhoAnimacao=Animacao3.Count;
         }
-        compImagem.Source=ImageSource.FromFile(nomeArquivo);
+        ImageView.Source=ImageSource.FromFile(nomeArquivo);
         frameAtual++;
         
         if(frameAtual >= tamanhoAnimacao)

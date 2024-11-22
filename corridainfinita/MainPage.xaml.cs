@@ -145,4 +145,6 @@ public partial class MainPage : ContentPage
 		GerenciaImagens(Layer2);
 		GerenciaImagens(Layerchao);
 	}
+
+	
 }
